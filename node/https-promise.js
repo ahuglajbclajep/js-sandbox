@@ -1,3 +1,7 @@
+/*
+ * wrap https.get with Promise
+ */
+
 const https = require('https');
 
 function getURL(url) {
@@ -7,12 +11,12 @@ function getURL(url) {
         res.setEncoding('utf8');
         res.on('data', chunk => resolve(chunk));
       } else {
-        reject(new Error(res.statusCode));
+        reject(res.statusCode);
       }
     }).on('error', err => reject(err.message));
   });
 }
 
 getURL('https://example.com')
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
+  .then(console.log)
+  .catch(console.log);
