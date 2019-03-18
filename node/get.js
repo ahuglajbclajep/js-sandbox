@@ -1,7 +1,3 @@
-/*
- * wrap https.get with Promise
- */
-
 const https = require("https");
 
 function get(url) {

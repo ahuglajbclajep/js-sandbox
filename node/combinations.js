@@ -1,6 +1,4 @@
-module.exports = { k_combinations, combinations };
-
-function k_combinations(set, k) {
+function kCombinations(set, k) {
   if (k <= 0 || set.length < k) return [];
   if (k === set.length) return [set];
   if (k === 1) return set.map(e => [e]);
@@ -18,9 +16,11 @@ function k_combinations(set, k) {
 function combinations(set) {
   const combs = [];
   for (let k = 1; k <= set.length; k++) {
-    k_combinations(set, k).forEach(e => {
+    kCombinations(set, k).forEach(e => {
       combs.push(e);
     });
   }
   return combs;
 }
+
+module.exports = { kCombinations, combinations };
