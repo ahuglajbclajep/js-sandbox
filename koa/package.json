@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "koa": "^2.5.1",
-    "koa-bodyparser": "^4.2.1",
-    "koa-passport": "^4.1.0",
-    "koa-route": "^3.2.0",
-    "koa-session": "^5.8.1",
-    "koa-static": "^4.0.3",
-    "passport-github": "^1.1.0"
+    "koa": "^2.5.1"
   }
 }
