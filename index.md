@@ -1,18 +1,19 @@
 ---
-layout: default
 title: browser
 ---
 
 ## Channel Messaging API
 
-[Using channel messaging - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging)
+- [create-channel-in-iframe](create-channel-in-iframe)  
+  [MessageChannel](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel) を使って iframe と通信する例。
 
-- [create-channel-in-iframe](create-channel-in-iframe)
-- [create-channel-in-index](create-channel-in-index)
+- [create-channel-in-index](create-channel-in-index)  
+  [MessageChannel](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel) を使って iframe と通信する例。
 
 ## Web Workers API
 
-[Using Web Workers - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+- [shared-worker](web-workers/shared-worker)  
+  [SharedWorker](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker) を使ってタブをまたいで通信する例。
 
-- [shared-worker](web-workers/shared-worker)
-- [inline-worker](web-workers/inline-worker)
+- [inline-worker](web-workers/inline-worker)  
+  [URL.createObjectURL()](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL) を使って Web Worker で動かすスクリプトを動的に生成する例。
