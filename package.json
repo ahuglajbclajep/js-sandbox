@@ -2,10 +2,12 @@
   "name": "js-sandbox",
   "version": "1.0.0",
   "private": true,
-  "devDependencies": {
-    "jest": "^24.5.0"
-  },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "deploy": "gh-pages -d browser"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1",
+    "jest": "^24.5.0"
   }
 }
