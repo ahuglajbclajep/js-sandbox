@@ -1,24 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Drop example</title>
+    <title>drop event example</title>
   </head>
   <body style="height: 100vh">
     <h1>drop event example</h1>
     <img />
+    <pre></pre>
     <script>
+      // see also: https://stackoverflow.com/a/6756680
       window.addEventListener("dragover", (e) => e.preventDefault());
       window.addEventListener("drop", (e) => e.preventDefault());
-      document.body.addEventListener("drop", (e) => {
+
+      function* range(from, to) {
+        for (let i = from; i <= to; i++) yield i;
+      }
+
+      // see also: https://stackoverflow.com/a/7392391
+      function isTextFile(file) {
+        // see also: https://github.com/file/file/blob/d604c5d/src/encoding.c#L181-L258
+        const textChars = [
+          ...range(0x07, 0x0d),
+          0x1b,
+          ...range(0x20, 0x7e),
+          ...range(0x80, 0xff),
+        ];
+        const chars = new Uint8Array(file.arrayBuffer());
+        return chars.every((c) => textChars.includes(c));
+      }
+
+      document.body.addEventListener("drop", async (e) => {
         const file = e.dataTransfer.files[0];
-        const url = URL.createObjectURL(file);
         if (file.type.match(/^image\//)) {
+          const url = URL.createObjectURL(file);
           const img = document.getElementsByTagName("img")[0];
           img.onload = () => URL.revokeObjectURL(url);
           img.src = url;
+        } else if (isTextFile(file)) {
+          const pre = document.getElementsByTagName("pre")[0];
+          pre.textContent = "loading ...";
+          pre.textContent = await file.text();
         } else {
-          console.log(url);
-          URL.revokeObjectURL(url);
+          document.getElementsByTagName("pre")[0].textContent = "non-text file";
         }
       });
     </script>
