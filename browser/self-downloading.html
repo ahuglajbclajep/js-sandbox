@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>self downloading example</title>
+  </head>
+  <body>
+    <h1>self downloading example</h1>
+    <button id="include">include script tags</button>
+    <button id="exclude">exclude script tags</button>
+    <script>
+      function download(html) {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+        a.download = location.pathname.split("/").pop();
+        a.dispatchEvent(new MouseEvent("click"));
+      }
+
+      document.getElementById("include").addEventListener("click", (e) => {
+        download(`<!DOCTYPE html>\n${document.documentElement.outerHTML}`);
+      });
+      document.getElementById("exclude").addEventListener("click", (e) => {
+        const doc = document.documentElement.cloneNode(true);
+        const scripts = [...doc.getElementsByTagName("script")];
+        scripts.forEach((s) => s.parentNode.removeChild(s));
+        download(`<!DOCTYPE html>\n${doc.outerHTML}`);
+      });
+    </script>
+  </body>
+</html>
